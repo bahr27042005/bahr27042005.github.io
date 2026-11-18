@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Bahr!</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #ffe0ef, #fff7fb, #ffc5df);
+  color: #d63378;
+  text-align: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  min-height: 100vh;
+  padding: 35px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+h1 {
+  font-size: clamp(38px, 9vw, 65px);
+  margin: 10px 0;
+  text-shadow: 2px 3px 5px #f5a6ca;
+}
+
+.name {
+  font-size: clamp(48px, 12vw, 75px);
+  font-weight: bold;
+  margin: 0 0 12px;
+}
+
+.subtitle {
+  font-size: 20px;
+  color: #a83b6c;
+}
+
+.decor {
+  font-size: 38px;
+  margin: 15px;
+}
+
+button {
+  border: 3px solid white;
+  background: #ed4b91;
+  color: white;
+  padding: 17px 30px;
+  border-radius: 50px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px #df78a7;
+  margin-top: 25px;
+  transition: 0.3s;
+}
+
+button:active {
+  transform: scale(0.94);
+}
+
+button:hover {
+  background: #d92e78;
+}
+
+.gift {
+  font-size: 65px;
+  margin: 15px;
+}
+
+.cake {
+  font-size: 65px;
+  margin: 15px;
+}
+
+.hidden {
+  display: none;
+}
+
+.card {
+  background: rgba(255,255,255,0.94);
+  border: 3px solid #ffc0db;
+  border-radius: 25px;
+  padding: 30px 20px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 10px 30px #e89abb;
+  animation: appear 1s ease;
+}
+
+.card p {
+  color: #8f315c;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.card h2 {
+  font-size: 35px;
+}
+
+.highlight {
+  color: #e83e87 !important;
+  font-weight: bold;
+  font-size: 21px !important;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 22px;
+  animation: float 5s linear forwards;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes float {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.small {
+  font-size: 14px;
+  margin-top: 25px;
+  color: #bd5d87;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="home">
+
+  <div class="decor">👑</div>
+
+  <h1>Happy Birthday!</h1>
+
+  <div class="name">Bahr</div>
+
+  <div class="subtitle">
+    A special day for a special friend ♡
+  </div>
+
+  <div class="gift">🎁</div>
+
+  <button onclick="openSurprise()">
+    🎁 Open Your Surprise
+  </button>
+
+  <div class="cake">🎂</div>
+
+  <div class="small">Made with ♡ just for Bahr</div>
+
+</div>
+
+<div class="container hidden" id="surprise">
+
+  <div class="card">
+
+    <div class="decor">🎀 💗 🎀</div>
+
+    <h2>Happy Birthday, Bahr! ❤️</h2>
+
+    <p>
+      I wish you a year full of happiness,
+      success, laughter, and unforgettable memories.
+    </p>
+
+    <p>
+      May all your dreams come true,
+      and may life bring you countless
+      beautiful surprises.
+    </p>
+
+    <p>
+      Never stop smiling and being yourself!
+    </p>
+
+    <p class="highlight">
+      You deserve all the best! ♡
+    </p>
+
+    <p>
+      From your friend ❤️
+    </p>
+
+    <button onclick="showMessage()">
+      One More Surprise 💌
+    </button>
+
+    <p id="extra" class="hidden highlight">
+      You're an amazing friend.
+      Never forget that! ❤️
+    </p>
+
+  </div>
+
+  <div class="cake">🎂 🎈 🎉</div>
+
+</div>
+
+<script>
+function openSurprise() {
+  document.getElementById("home").classList.add("hidden");
+
+  document.getElementById("surprise").classList.remove("hidden");
+
+  hearts();
+}
+
+function showMessage() {
+  document.getElementById("extra").classList.remove("hidden");
+
+  hearts();
+}
+
+function hearts() {
+  const symbols = ["❤️", "💕", "💗", "✨", "🌸"];
+
+  for (let i = 0; i < 35; i++) {
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = symbols[
+      Math.floor(Math.random() * symbols.length)
+    ];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+  }
+}
+</script>
+
+</body>
+</html>
+
